@@ -293,23 +293,68 @@ Assumindo que estamos utilizando `n bits` para representar números binários:
 - A representação em ponto flutuante, como o nome diz, permite que o ponto binário seja **regulado** conforme um `valor de expoente`.
 - A aritmética é mais complexa, mas permite representar mais valores que a estratégia de ponto fixo.
 - Padrão universalmente adotado: `IEEE 754`:
-    - Precisão simples (32-bits);
-    - Precisão dupla (64-bits);
+    - Precisão simples (`32-bits`);
+    - Precisão dupla (`64-bits`);
 
 ### IEEE 754: Precisão Simples
-- O formato IEEE 754 de precisão simples ocupa exatamente 32-bits:
-- 1 bit representa o sinal (s).
-- 8 bits para o expoente (e).
-- 23 bits para a mantissa, parte fracionária, (f ), considerando
-representação de ponto-fixo).
-Forma geral: (−1)s · 1.f · 2e−127
+- O formato IEEE 754 de precisão simples ocupa exatamente `32-bits`:
+    - $1$ bit representa o sinal $(s)$.
+    - $8$ bits para o expoente $(e)$.
+    - $23$ bits para a mantissa, **parte fracionária**, $(f)$, considerando representação de ponto-fixo.
+- Forma geral: $(−1)^s \cdot 1.f \cdot 2^{e−127}$
 
+![precisao-simples](../img/04-representacao-numerica/precisao-simples.png)
+
+*Exemplo:*
+- $s = 0$
+- $e = 124$
+- $f = 0.25$
+- Resultado: $(−1)^0 \cdot 1.25 \cdot 2^{(124−127)} = 1.25 \cdot 2^{−3} = 0.15625$
+- Considerando a forma geral, existem **7 casos** do padrão IEEE para precisão simples:
+    1. $e = 255$ e $f \neq 0$ temos `NaN` (not a number).
+    2. $s = 0$, $e = 255$ e $f = 0$: temos $\infty$
+    3. $s = 1$, $e = 255$ e $f = 0$: temos $-\infty$
+    4. $0 < e < 255$: temos $(−1)^s \cdot 1.f \cdot 2^{e−127}$
+    5. $e = 0$ e $f \neq 0$: temos $(−1)^s \cdot (0.f ) \cdot 2^{−126}$
+    6. $s = 0$, $e = 0$ e $f = 0$: temos $0$.
+    7. $s = 1$, $e = 0$ e $f = 0$: temos $−0$.
+- `NaN`: usado para indicar um valor **irrepresentável**, como uma raiz de número negativo.
+- $\infty$ e $-\infty$: utilizados para representador `overflow`.
 
 ### IEEE 754: Precisão Dupla
+- O formato IEEE 754 de precisão dupla ocupa exatamente `64-bits`:
+    - $1$ bit representa o sinal $(s)$.
+    - $11$ bits para o expoente $(e)$.
+    - $52$ bits para a mantissa, **parte fracionária**, $(f)$, considerando representação de ponto-fixo.
+- Forma geral: $(−1)^s \cdot 1.f \cdot 2^{e−1023}$
+
+![precisao-dupla](../img/04-representacao-numerica/precisao-dupla.png)
+
+- Considerando a forma geral, existem 7 casos do padrão IEEE para precisão dupla:
+    1. $e = 2047$ e $f \neq 0$ temos `NaN` (not a number).
+    2. $s = 0$, $e = 2047$ e $f = 0$: temos $\infty$
+    3. $s = 1$, $e = 2047$ e $f = 0$: temos $-\infty$
+    4. $0 < e < 2047$: temos $(−1)^s \cdot 1.f \cdot 2^{e−1023}$
+    5. $e = 0$ e $f \neq 0$: temos $(−1)^s \cdot (0.f) \cdot 2^{−1022}$
+    6. $s = 0$, $e = 0$ e $f = 0$: temos $0$.
+    7. $s = 1$, $e = 0$ e $f = 0$: temos $−0$.
 
 ### Considerações sobre o Padrão IEEE 754
-
-
+- Permitem **maior precisão** para representação de números reais.
+- Aritmética mais **complexa** e mais **lenta** que a de `ponto fixo`.
+- Conseguem representar resultados como `NaN`, $\infty$ e $-\infty$.
+- $0$ e $−0$ são representados.
+- Além dos dois formatos compreendidos temos o formato de **precisão estendida**, que considera mais bits.
+- O padrão IEEE 754 também especifica quais são as **opções** no caso de arredondamentos.
 
 ## ASCII
+- A codificação ASCII consegue representar **caracteres** utilizando inteiros sem sinal de `7 bits`.
+- **Cada inteiro** corresponde a **um caractere**, seja ele de controle ou não.
+- Caracteres de controle possuem várias finalidades, como: **quebra de linha**, **tabulação horizontal** e o chamado `carriage return`.
+- A maioria das codificações de caracteres atuais é baseado na ASCII, considerando ela como um subconjunto.
+    - ASCII estendida.
+    - UTF-8.
+    - UTF-16.
+    - ...
 
+![tabela-ascii](../img/04-representacao-numerica/tabela-ascii.png)
