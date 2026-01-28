@@ -15,21 +15,21 @@ algarismos indica o **peso** a ser aplicado àquele algarismo.
 - Os algarismos são colocados em **sequência** para compor um
 número.
 - *Exemplo:* $9543 = 3 \cdot 10^0 + 4 \cdot 10^1 + 5 \cdot 10^2 + 9 \cdot 10^3 = 3 + 40 + 500 + 9000.$
--  Um número $x$, de $n$ dígitos,composto da sequência de dígitos $x_{n-1} x_{n−2} \ldots x_0$ pode ser interpretado da seguinte maneira :
+-  Um número $x$ de $n$ dígitos, composto da sequência de dígitos $x_{n-1} x_{n−2} \ldots x_0$ pode ser interpretado da seguinte maneira :
 
 $$ x = \sum_{i = 0}^{n - 1} x_i \cdot 10^i $$
 
 ### Sistema Binário
 - É muito relevante para a Computação, uma vez que a `lógica digital` é `booleana`.
-- Este sistema possui apenas **dois algarismos** (`bits`): 0 ou 1, 
+- Este sistema possui apenas **dois algarismos** (`bits`): 0 ou 1 
     - Ligado ou desligado; 
     - Com tensão ou sem tensão; 
     - ...
 - É um **sistema posicional**.
 - Possui `base 2`.
 
-> Notação: Seja $x$ um número e $d$ uma baseDiremos que x está escrito de acordo com o sistema de base d com a seguinte notação: 
-> $$x_d$$
+> Notação: Seja $x$ um número e $d$ uma base, diremos que $x$ está escrito de acordo com o sistema de base $d$ com a seguinte notação: 
+> $x_d$
 
 - *Exemplos:* $1001001_2, 1101_2, 11001100_2.$
 
@@ -39,7 +39,7 @@ $$ x = \sum_{i = 0}^{n - 1} x_i \cdot 10^i $$
 $$ \sum_{i = 0}^{n - 1} x_i \cdot 2^i $$
 
 - *Exemplos:*
-- $10_2 = 0 \cdot 2^0 + 1 \cdot 2^1 = 2_{10}$
+- $10_2 = 0 \cdot 2^0 + 1 \cdot 2^1 = 2_{10}.$
 - $1101_2 = 1 \cdot 2^0 + 0 \cdot 2^1 + 1 \cdot 2^2 + 1 \cdot 2^3 = 13_{10}.$
 - $111_2 = 1 \cdot 2^0 + 1 \cdot 2^1 + 1 \cdot 2^2 = 7_{10}.$ 
 
@@ -66,7 +66,7 @@ número decimal em seu equivalente em binário.
 
 ### Sistema Octal
 - Baseado nos algarismos {0, 1, 2, 3, 4, 5, 6, 7}.
-- Possui `base 8`
+- Possui `base 8`.
 - Um **número binário** pode ser convertido *facilmente* para um **número octal** ao separá-lo em `triplas` (da esquerda para a direita) e **interpretar** os valores destas triplas.
 - Caso o número de `bits` **não** seja `múltiplo de 3`, o **último agrupamento** de bits (mais à esquerda) terá 1 ou 2 bits.
 
@@ -182,8 +182,8 @@ $$ \sum_{i = 0}^{n - 1} x_i \cdot 16^i $$
     - $62778_{10} = F53A_{16}.$
 
 ## Inteiros 
-- Mas como representamos n´umeros negativos?
-- Como representar os n´umeros inteiros computacionalmente?
+- Mas como representamos números negativos?
+- Como representar os números inteiros computacionalmente?
 
 ### Sinal-magnitude
 - Na abordagem de sinal magnitude, reservamos o `bit mais significativo` (mais à esquerda) para descrever o sinal:
@@ -220,7 +220,7 @@ correspondente **positivo**.
     - $-43_{10} = 11010100_2$.
 
 #### Vantagens/Desvantagens
-Assumindo que estamos utilizando `n bits` para representar números binários
+Assumindo que estamos utilizando `n bits` para representar números binários:
 
 - Vantagens:
     - Arirmética mais direta.
@@ -229,8 +229,87 @@ Assumindo que estamos utilizando `n bits` para representar números binários
 - Intervalo representado é **simétrico** $[−(2^{n−1} − 1), 2^{n−1} − 1]$. 
 
 ### Complemento de Dois
+- A estratégia de ***complemento de dois*** é obtida a partir da representação em complemento de um somada com $1_2$.
+- Supondo que os números binários estejam sendo representados com `n bits` em complemento de dois, então o **número binário** $x = x_{n−1} \ldots x_0$ pode ser convertido para decimal da seguinte forma:
+$$ -1 \cdot x_{n-1} \cdot 2^{n-1} + \sum^{n-2}_{i=0} x_i \cdot 2^{i}  $$
+
+*Exemplos:* Considerando que estamos representando os números binários com `8 bits`
+- $43_{10}$ = $00101011_2$.
+    - Complemento de um: $−43_{10}$ = $11010100_2$.
+    - Complemento de dois: $11010101_2$.
+    - $11010101_2$ = $ −1 \cdot 1 \cdot 2^7 + 1 \cdot 2^0 + 0 \cdot 2^1 +1 \cdot 2^2 +0 \cdot 2^3 + 1 \cdot 2^4 +0 \cdot 2^5 + 1 \cdot 2^6 = −128 + 1 + 4 + 16 + 64 = −43_{10}$
+- $1_{10} = 00000001_2.$
+    - Complemento de um: $−1_{10} = 11111110_2$.
+    - Complemento de dois: $11111111_2$.
+    - $11111111_2 = − 1 \cdot 1 \cdot 2^7 + 1 \cdot 2^0 + 1 \cdot 2^1 + 1 \cdot 2^2 + 1 \cdot 2^3 + 1 \cdot 2^4 + 1 \cdot 2^5 + 1 \cdot 2^6 = −128 + 64 + 32 + 16 + 8 + 4 + 2 + 1 = −1_{10}$.
+- $0_{10} = 00000000_2.$
+    - Complemento de um: $−0_{10} = 11111111_2.$
+    - Complemento de dois: $00000000_2.$
+
+#### Vantagens/Desvantagens
+Assumindo que estamos utilizando `n bits` para representar números binários:
+
+- Vantagens:
+    - Aritmética mais direta ainda.
+    - O valor $0_{10}$ possui uma única representação em binário: $\underbrace{0 \ldots 0}_n$.
+- Desvantagens:
+    - Um pouco mais difı́cil de compreender.
+- Intervalo representado é **assimétrico** $[−2^{n−1}, 2^{n−1} − 1]$.
+- **Estratégia padrão para representar inteiros!**
 
 ## Reais
+- Diferentemente dos números inteiros, **não é possı́vel** representar **todos** os números reais dentro de um intervalo em um computador usando uma quantidade `fixa de bits`.
+- Isso dá margem à arredondamentos, o que leva à **imprecisões**.
+- Erros são introduzidos durante os cálculos.
+- Apesar das limitações, precisamos trabalhar com números reais.
+- Duas principais estratégias são:
+    - Representação em `ponto fixo`.
+    - Representação em `ponto flutuante`.
+
+### Ponto Fixo
+- A representação em ponto fixo se parece muito com a representação de **inteiros** em `complemento de dois`.
+- A diferença é que temos a presença de um **ponto binário**.
+- A **localização** deste ponto binário nos indica que `à direita` deste ponto, os expoentes passam a ser **negativos**.
+- Equivalentemente podemos ver a representação em ponto fixo como a representação inteira em `complemento de dois` **dividido** por alguma `potência de dois`.
+
+*Exemplos*: Supondo que o ponto binário se encontra antes do *segundo bit menos significativo*, e assumindo números binários de `8 bits` em `complemento de dois` temos
+
+- $010011.10_2 = 0 \cdot 2^{−2} + 1 \cdot 2^{−1} + 1 \cdot 2^0 + 1 \cdot 2^1 + 0 \cdot 2^2 + 0 \cdot 2^3 + 1 \cdot 2^4 = 19.5$
+    - $010011.10_2 = 01001110_2 /4_{10} = 78/4 = 19.5$
+
+- $110011.11_2 = −1 \cdot 2^5 + 1 \cdot 2^{−2} + 1 \cdot 2^{−1} + 1 \cdot 2^0 +1 \cdot 2^1 +0 \cdot 2^2 + 0 \cdot 2^3 + 1 \cdot 2^4 = −12.25_{10}$.
+    - $110011.11_2 = 11001111_2 /4_{10} = −49/4 = −12.25_{10}$.
+
+#### Vantagens/Desvantagens
+
+- Vantagens:
+    - Aritmética extremamente simples, podemos usar a mesma lógica de hardware da representação dos inteiros.
+    - Alto desempenho.
+- Desvantagens:
+    - Baixa precisão.
+- Encontrado em hardwares mais simples e sistemas embarcados.
+
+### Ponto Flutuante
+- A representação em ponto flutuante, como o nome diz, permite que o ponto binário seja **regulado** conforme um `valor de expoente`.
+- A aritmética é mais complexa, mas permite representar mais valores que a estratégia de ponto fixo.
+- Padrão universalmente adotado: `IEEE 754`:
+    - Precisão simples (32-bits);
+    - Precisão dupla (64-bits);
+
+### IEEE 754: Precisão Simples
+- O formato IEEE 754 de precisão simples ocupa exatamente 32-bits:
+- 1 bit representa o sinal (s).
+- 8 bits para o expoente (e).
+- 23 bits para a mantissa, parte fracionária, (f ), considerando
+representação de ponto-fixo).
+Forma geral: (−1)s · 1.f · 2e−127
+
+
+### IEEE 754: Precisão Dupla
+
+### Considerações sobre o Padrão IEEE 754
+
+
 
 ## ASCII
 
