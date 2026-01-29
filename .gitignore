@@ -1,0 +1,27 @@
+# C - Binários e builds
+*.out
+*.exe
+*.bin
+a.out
+
+*.o
+*.obj
+*.a
+*.so
+*.dll
+*.dylib
+
+# Pastas de saída
+bin/
+build/
+out/
+
+# Temporários
+*.swp
+*.swo
+*.tmp
+*~
+
+# Sistema
+.DS_Store
+Thumbs.db
