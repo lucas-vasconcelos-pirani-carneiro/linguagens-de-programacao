@@ -254,7 +254,7 @@ int main(void){
 
 ```c
 /**
-* Autor: Lucas
+* Autor: Daniel Saad
 *
 * Este programa realiza a soma entre dois inteiros com valor 2 e 3,
 * armazenados nas variáveis num_1 e num_2 e armazena o valor desta
