@@ -155,12 +155,115 @@ int num_1,num_2,num_3;
 | unsigned char | 1 byte  | 0 a 255                    |
 
 ## Atribuição
+- Utilizamos o comando de `atribuição (=)` para **designar** valores as nossas variáveis.
+- O comando de atribuição designa um valor para uma variável **previamente** declarada.
+- Para isto, utilizamos da seguinte sintaxe: `<variavel> = <expressão>`
+
+> [!IMPORTANT]
+>
+> Sempre declarar **todas** as variáveis **antes** de sua atribuição.
 
 
+*Exemplos*:
+```c
+double pi;
+pi = 3.1415;
+char c;
+c = 65; /* C recebe o valor 65, que corresponde ao caractere 'A'.*/
+```
 
-## Estrutura
+> [!NOTE]
+>
+> A separação entre a parte inteira e a parte fracionária é feita através do sı́mbolo de `'.'` .
 
+### Atribuição e Caracteres
+- Apesar de os caracteres se comportarem como **inteiros** de `1 byte` na linguagem C, podemos usar o operador de atribuição indicando o valor do caractere entre **aspas simples**, sem a necessidade de consultar a `tabela ASCII`.
+- Isto deixa o programa mais legı́vel e menos propenso a erros.
 
 ```c
+char c;
+c = 'A'; // C recebe o valor 'A', que internamente é 65.
+```
 
+### Declaração e Atribuição
+- É possı́vel atribuir um valor **imediatamente** após a **declaração** de uma variável em C.
+- Isto pode ser feito através da seguinte sintaxe: `<tipo> <nome_da_variavel> = <valor>`
+
+```c
+char c = 'A'; // C recebe o valor 'A'
+```
+
+- O mesmo pode ser feito com **múltiplas declarações** em uma única linha.
+- Sintaxe: `<tipo> <nome_1> = <valor_1>, ... , <nome_n> = <valor_n>;`
+
+```c
+int primeiro_numero = 2, segundo_numero = 3;
+```
+
+### Constantes
+- Uma variável pode ser declarada com o **modificador** `const`.
+- Isso efetivamente torna a variável uma constante, ou seja, **não** é possı́vel **alterar o valor** dela.
+- **Somente** é possı́vel designar um valor à uma constante no momento de sua **declaração**.
+- Caso o valor de uma constante seja alterado, o compilador indicará um `erro` de **semântica** durante a `compilação`.
+
+*Exemplos:*
+```c
+const double pi = 3.1415;
+/* Uso Incorreto de Constante */
+const double pi = 3.1415;
+pi = 3.1415926; // não é possı́vel alterar o valor de uma constante.
+```
+
+> [!NOTE]
+>
+> #### Boa Prática de Programação: Nomeação de Variáveis
+> Caso você saiba de antemão que o valor de uma variável **sempre será o mesmo**, você 
+> pode declará-la como `const`. Isso deixa o código mais legı́vel, uma vez que a 
+> variável está sendo explicitamente sinalizada como **imutável**.
+
+## Estrutura
+- A estrutura básica de um programa na linguagem C é a seguinte:
+
+```c
+int main(void){
+    declaração de variáveis
+    ...
+    comando_1
+    comando_2
+    ...
+    comando_n
+    return 0;
+}
+```
+
+*Exemplo:*
+```c
+int main(void){
+    int num_1 = 2, num_2 = 3, num_3;
+    num_3 = num_1 + num_2;
+    return 0;
+}
+```
+
+### Comentários
+- Para **documentar** o nosso código e deixá-lo mais legı́vel, tanto para nós como para as outras pessoas, é importante escrever **comentários**.
+- Os comentários tem como missão **descrever trechos complexos**, realizar **anotações** no código ou até mesmo especificar a **licença** do software e o **autor**.
+- Eles são completamente **ignorados** por `compiladores` ou `interpretadores`.
+- Na linguagem C, comentários de várias linhas devem estar presentes **entre** os sı́mbolos `/*` e `*/`.
+- Comentários de uma **única linha** podem ser adicionados após os sı́mbolos `//`.
+
+```c
+/**
+* Autor: Lucas
+*
+* Este programa realiza a soma entre dois inteiros com valor 2 e 3,
+* armazenados nas variáveis num_1 e num_2 e armazena o valor desta
+* soma na variável num_3
+*/
+
+int main(void){
+    int num_1 = 2, num_2 = 3, num_3;
+    num_3 = num_1 + num_2; // a variável num_3 recebe a soma das outras duas
+    return 0;
+}
 ```
