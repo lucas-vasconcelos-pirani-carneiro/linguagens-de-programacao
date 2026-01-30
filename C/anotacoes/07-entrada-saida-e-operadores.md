@@ -275,7 +275,7 @@ int main() {
 
 ## Entrada
 
-#### scanf
+### scanf
 - Para conseguir** ler dados** e **armazená-los** às variáveis, utilizamos o comando `scanf`.
 - Funciona de maneira muito parecida ao `printf`.
 - Através dos **especificadores**, os **mesmos** utilizados no `printf`, indicamos o **tipo da variável** que está sendo lida.
