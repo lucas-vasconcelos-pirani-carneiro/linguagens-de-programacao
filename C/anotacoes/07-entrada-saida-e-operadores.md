@@ -276,7 +276,7 @@ int main() {
 ## Entrada
 
 ### scanf
-- Para conseguir** ler dados** e **armazená-los** às variáveis, utilizamos o comando `scanf`.
+- Para conseguir **ler dados** e **armazená-los** às variáveis, utilizamos o comando `scanf`.
 - Funciona de maneira muito parecida ao `printf`.
 - Através dos **especificadores**, os **mesmos** utilizados no `printf`, indicamos o **tipo da variável** que está sendo lida.
 - **Observação:** para o tipo `double`, devemos utilizar o especificador `%lf`.
@@ -318,4 +318,215 @@ int main(){
 ```
 
 ## Expressões Aritméticas
+- Uma `variável` ou `constante` são consideradas **expressões aritméticas**.
+- Uma expressão aritmética também pode envolver, além de variáveis, `operadores aritméticos`, tais como:
+    - Adição;
+    - Subtração;
+    - Multiplicação;
+    - Divisão;
+    - Resto;
+- Através das expressões aritméticas podemos realizar **cálculos**.
 
+| **Operador** | **Significado** | **Exemplo** |
+| :----------: | :-------------: | :---------: |
+|      +       |      Adição     |    a + b    |
+|      -       |    Subtração    |    a - b    |
+|      *       |  Multiplicação  |    a * b    |
+|      /       |     Divisão     |    a / b    |
+|      %       |      Resto      |    a % b    |
+ 
+*Exemplo:* Adição
+```c
+#include <stdio.h>
+
+int main(void) {
+    int a = 2, b = 5;
+    int c = a + b;
+    printf("O valor de c é: %d\n", c);
+    return 0;
+}
+```
+
+*Exemplo:* Subtração
+```c
+#include <stdio.h>
+
+int main(void) {
+    int a = 2, b = 5;
+    int c = a - b;
+    printf("O valor de c é: %d\n", c);
+    return 0;
+}
+```
+
+*Exemplo:* Multiplicação
+```c
+#include <stdio.h>
+
+int main(void) {
+    int a = 2, b = 5;
+    int c = a * b;
+    printf("O valor de c é: %d\n", c);
+    return 0;
+}
+```
+
+*Exemplo:* Divisão
+```c
+#include <stdio.h>
+
+int main(void) {
+    int a = 2, b = 5;
+    int c = a / b;
+    printf("O valor de c é: %d\n", c);
+    return 0;
+}
+```
+
+### Divisão Inteira
+- Quando os **dois parâmetros** da divisão são `inteiros`, realiza-se a `divisão inteira`.
+- Apenas a **parte inteira** é **computada**, a parte fracionária é desprezada.
+- Se **pelo menos um** dos parâmetros é `ponto flutuante`, adota-se a **divisão fracionária**.
+- Note que, se o **retorno** de uma divisão fracionária for para uma **variável inteira**, a parte fracionária será **desprezada** de qualquer forma, então, o retorno de uma divisão fracionária deve ser atribuı́da a uma variável do tipo `float` ou `double`.
+
+*Exemplo:* Divisão entre Reais
+```c
+#include <stdio.h>
+
+int main(void) {
+    double a = 2, b = 5;
+    double c = a / b;
+    printf("O valor de c é: %.2f\n", c);
+    return 0;
+}
+```
+
+*Exemplo:* Resto da Divisão
+```c
+#include <stdio.h>
+
+int main(void) {
+    int a = 23, b = 5;
+    int c = a % b;
+    printf("O valor de c é: %d\n", c);
+    return 0;
+}
+```
+
+> [!IMPORTANT]
+>
+> Apenas aplicável quando os argumentos são inteiros.
+
+*Exemplo:* Resto Negativo
+```c
+#include <stdio.h>
+
+int main(void) {
+    int a = -23, b = 5;
+    int c = a % b;
+    printf("O valor de c é: %d\n", c);
+    return 0;
+}
+```
+
+### Precedência
+- Assim como na aritmética convencional, alguns operadores da C, possuem precedência sobre outros.
+- Considerando o sentido da **esquerda para a direita**, a seguinte ordem de precedência é adotada:
+    1. `*` e `/`.
+    2. `%`.
+    3. `+` e `-`.
+- *Exemplos:*
+    1. `5 * 3 + 2 = 17`
+    2. `5 * 6 / 3 - 3 = 7`
+    3. `5 + 4 % 3 = 6`
+    4. `5 * 4 % 3 + 2 = 4`
+- Assim como na aritmética convencional, podemos usar os **parênteses** para **especificar a ordem** na qual as expressões devem ser avaliadas.
+- Além deste ponto principal, o uso de parênteses também deixa o código mais **legı́vel**.
+- Podemos elaborar expressões mais complicadas pensando mais naturalmente.
+- *Exemplo:* `((5+3)/2)*((13 % 4)+1) = 8`
+
+### Atribuição Simplificada
+- Frequentemente nos deparamos com expressões que **reescrevem** valores de uma variável quando ela **depende do valor antigo**.
+- *Exemplo:* `a = a * 2`.
+- Se o valor de **a é 3**, o novo valor de a passará a ser **6 após a execução** desta linha.
+- Como este tipo de operação é muito comum, podemos escrever de maneira abreviada: `a *= 2`.
+
+| Atribuição | Atribuição Simplificada |
+|-----------------|------------------|
+| `a = a + b`     | `a += b`         |
+| `a = a - b`     | `a -= b`         |
+| `a = a * b`     | `a *= b`         |
+| `a = a / b`     | `a /= b`         |
+| `a = a % b`     | `a %= b`         |
+
+### Incremento e Decremento
+- Duas outras operações muito comuns são as operações de `incremento` e `decremento`: isto é, **aumentar 1** ou **diminuir 1** de um valor inteiro.
+- Usamos os operadores `++` e `--`.
+    - `a = a + 1` ≡ `a++` ≡ `++a`.
+    - `a = a - 1` ≡ `a--` ≡ `--a`.
+- Podem haver **diferenças** caso os operadores sejam usados de forma `prefixada` ou `pós-fixada` em expressões mais complexas.
+- `Pré-fixada:` **Primeiro incrementa-se** o valor da variável e **depois avalia-se** a expressão.
+- `Pós-fixada:` **Primeiro avaliamos** a expressão e **depois incrementamos** o valor da variável.
+
+*Exemplo:* Pré-Fixada
+```c
+#include <stdio.h>
+
+int main(void) {
+    int a = 2;
+    int b = ++a + 2;
+    printf("O valor de a é %d e o valor de b é %d\n", a, b); // 3 e 5
+    return 0;
+}
+```
+
+*Exemplo:* Pós-Fixada
+```c
+#include <stdio.h>
+
+int main(void) {
+    int a = 2;
+    int b = a++ + 2;
+    printf("O valor de a é %d e o valor de b é %d\n", a, b); // 3 e 4
+    return 0;
+}
+```
+
+### Conversão de Tipos (`cast`)
+- Na linguagem C a conversão de tipos pode ser **implı́cita** ou **explı́cita**.
+- Na conversão implı́cita, caso atribua-se um valor para uma variável de **tipo diferente**, ela pode ser convertida **sem prejuı́zo de informação** ou com alguma perda.
+    - Por exemplo: caso queiramos atribuir um **número fracionário** a uma
+    variável `int`, haverá uma perda, pois haverá *truncamento* do número
+    inteiro.
+    - O contrário pode ocorrer **sem problemas**, já que o tipo `double`
+    **suporta** todos os inteiros.
+
+*Exemplo:* Conversão Implícita
+```c
+#include <stdio.h>
+
+int main() {
+    int a = 5;
+    double b = a;
+    printf("%d %lf\n", a, b);
+
+    b = 9.74;
+    a = b;
+    printf("%d %lf\n", a, b);
+    return 0;
+}
+```
+
+- É possı́vel também indicar como uma determinada expressão deve ser avaliada explicitamente.
+- Útil para realizar **divisões fracionárias** em vez de divisões inteiras.
+
+*Exemplo:* Conversão Explícita
+```c
+#include <stdio.h>
+
+int main(void) {
+    int a = 5, b = 2;
+    printf("O valor da divisão 5/2 = %.2f\n", (double) a/b);
+    return 0;
+}
+```
