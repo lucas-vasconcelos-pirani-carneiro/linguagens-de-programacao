@@ -270,8 +270,145 @@ int main() {
 - Com os parênteses, o número é ı́mpar, o que já configura a expressão **verdadeira**.
 
 ## Estrutura de Decisão
+- As estruturas de decisão recebem uma expressão e, dependendo do **valor verdade** dela, é capaz de **desviar o código** para diferentes trechos.
+- Podemos empregar as estruturas de decisão para que o programa se comporte de maneiras diferentes quando **determinadas condições** forem **atingidas**.
 
+### Se Então
+- A estrutura **Se, então** da linguagem C verifica o `valor da expressão` e (**Se**) e, caso ela seja `verdadeira`, **executa o bloco de código** relacionado à estrutura (**Então)**.
+- Após finalizar a execução do bloco de código, o programa **continua a execução** de acordo com as instruções que estão abaixo do bloco de código.
 
+![se-entao](../img/08-estruturas-de-decisao/se-entao.png)
+
+#### Sintaxe
+- Único Comando:
+```c
+if (expr)
+    comando_1;
+```
+
+- Múltiplos Comandos:
+```c
+if (expr) {
+    comando_1;
+    comando_2;
+    ...
+    comando_n;
+}
+```
+
+> [!NOTE]
+>
+> #### Observação: Uso das Chaves
+> - É um erro de **lógica** não colocar chaves quando o bloco de comandos do **Se, Então** possui mais de um comando.
+> - O código pode até `compilar`, mas o resultado **não** será o esperado.
+> - Inclusive, as chaves podem ser utilizadas até quando se tem **apenas** um único comando no bloco.
+
+#### Exemplos
+
+*Exemplo:* Verifica se um Número é Maior que o Outro
+```c
+#include <stdio.h>
+
+int main(void) {
+    int a, b;
+    printf("Digite dois valores, a e b: ");
+    scanf("%d %d", &a, &b);
+    if (a > b)
+        printf("a = %d é maior que b = %d\n", a, b);
+    return 0;
+}
+```
+
+*Exemplo:* Verifica se um Número é Par
+```c
+#include <stdio.h>
+
+int main(void) {
+    int n;
+    printf("Digite um número: ");
+    scanf("%d", &n);
+    if (n % 2 == 0)
+        printf("%d é par\n", n);
+    return 0;
+}
+```
+
+*Exemplo:* Verifica se um Número é Múltiplo de 6
+```c
+#include <stdio.h>
+
+int main(void) {
+    int n;
+    printf("Digite um número: ");
+    scanf("%d", &n);
+    if ((n % 2 == 0) && (n % 3 == 0))
+        printf("%d é múltiplo de 6\n", n);
+    return 0;
+}
+```
+
+*Exemplo:* Verifica se um Número é Múltiplo de 2 ou de 5
+```c
+#include <stdio.h>
+
+int main(void) {
+    int n;
+    printf("Digite um número: ");
+    scanf("%d", &n);
+    if (n % 2 == 0 || n % 5 == 0)
+        printf("%d é múltiplo de 2 ou de 5\n", n);
+    return 0;
+}
+```
+
+*Exemplo:* Verifica se um Número é Par ou se Ele é Múltiplo de 5 e 7
+```c
+#include <stdio.h>
+
+int main(void) {
+    int n;
+    printf("Digite um número: ");
+    scanf("%d", &n);
+    if (n % 2 == 0 || ((n % 5 == 0) && (n % 7 == 0)))
+        printf("%d é par ou múltiplo de 5 e 7\n", n);
+    return 0;
+}
+```
+
+*Exemplo:* Troca o valor de Dois Números caso o Primeiro seja Maior que o Segundo
+```c
+#include <stdio.h>
+
+int main(void) {
+    int a, b;
+    printf("Digite dois números: ");
+    scanf("%d %d", &a, &b);
+    if (a > b)
+    {
+        int aux = a;
+        a = b;
+        b = aux;
+    }
+    printf("%d %d\n", a, b);
+    return 0;
+}
+```
+
+> [!NOTE]
+>
+> #### Boa Prática de Programação: Indentação
+> - Independente do bloco da estrutura if possuir um ou múltiplos comandos, estes devem estar **indentados** para maior **legibilidade** de código.
+
+### Senão
+
+*Exemplo:* 
+```c
+
+```
+
+### Estruturas Aninhadas
+
+### Operador Ternário
 
 ## Considerações
 
