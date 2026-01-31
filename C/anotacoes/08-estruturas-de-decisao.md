@@ -60,7 +60,7 @@ int main(void) {
 }
 ```
 
-> ![WARNING]
+> [!WARNING]
 >
 > Não confundir os sı́mbolos de **atribuição** (`=`) e **igualdade** (`==`). 
 > - `=` é utilizado para **atribuir** a uma variável o **valor** de uma expressão.
@@ -111,35 +111,42 @@ int main(void) {
 ```
 
 ### Maior
-
-*Exemplos:* 
-```c
-```
+- O operador maior, quando aplicado sobre duas expressões, `retorna 1` (**verdadeiro**), quando a da **esquerda é maior** que a da **segunda**, ou `0` (**falso**), caso contrário.
+- Na linguagem C, usamos o sı́mbolo `>`:
+    - `9 > 9 // retorna 0 (falso)`.
+    - `5 > 0 // retorna 1 (verdadeiro)`.
 
 ### Maior ou Igual
-
-*Exemplos:* 
-```c
-```
+- O operador maior ou igual, quando aplicado sobre duas expressões,
+`retorna 1` (**verdadeiro**), quando a da **esquerda é maior ou igual** que a da **direita**, ou `0` (**falso**), caso contrário.
+- Na linguagem C, usamos o sı́mbolo `>=`:
+    - `9 >= 9 // retorna 1 (verdadeiro)`.
+    - `0 >= 5 // retorna 0 (falso)`.
 
 ### Menor
-
-*Exemplos:* 
-```c
-```
+- O operador menor, quando aplicado sobre duas expressões, `retorna 1` (**verdadeiro**), quando a da **esquerda é menor que** a da **direita**, ou `0` (**falso**), caso contrário.
+- Na linguagem C, usamos o sı́mbolo `<`:
+    - `9 < 9 // retorna 0 (falso)`.
+    - `0 < 5 // retorna 1 (verdadeiro)`.
 
 ### Menor ou Igual
-
-*Exemplos:* 
-```c
-```
+- O operador menor ou Igual, quando aplicado sobre duas expressões, `retorna 1` (**verdadeiro**), quando a da **esquerda é menor ou igual** que a da **direita**, ou `0` (**falso**), caso contrário.
+- Na linguagem C, usamos o sı́mbolo `<=`:
+    - `9 <= 9 // retorna 1 (verdadeiro)`. 
+    - `5 <= 0 // retorna 0 (falso)`.
 
 ### Comparação de Números Reais
+- Os operadores relacionais apresentados podem ser utilizados para **números inteiros**, **caracteres** ou **reais**.
+- Contudo, devido à natureza aproximada da **representação computacional** dos **números reais**, a comparação pode **não** dar o **valor esperado**, devido à **erros de precisão** ou **arrendondamento**. 
+
+*Exemplo:* Comparação de Reais 
+```c
+
+```
 
 ## Operadores Lógicos
 
 ## Estrutura de Decisão
 
 ## Considerações
-
 
