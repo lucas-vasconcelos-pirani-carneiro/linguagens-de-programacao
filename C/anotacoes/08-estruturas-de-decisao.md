@@ -141,12 +141,137 @@ int main(void) {
 
 *Exemplo:* Comparação de Reais 
 ```c
+#include <stdio.h>
 
+int main(void) {
+    double a = 1.0;
+    double b = (0.3 * 3) + 0.1;
+    int valor_expr = (a == b);
+    printf("%.20f %.20f %d\n", a, b, valor_expr); 
+   // Resultado: 1.00000000000000000000 0.99999999999999988898 0
+    return 0;
+}
+```
+
+- O operador `==` **não** nos dá o **resultado esperado**, devido à natureza da representação em `ponto flutuante`.
+- Uma possı́vel solução é usar um valor $\epsilon$ bastante pequeno de forma que, se |a − b| < $\epsilon$.
+- O valor de ϵ deve ser **escolhido** de acordo com a sua aplicação.
+- Usamos o comando `fabs(expr)` do cabeçalho `<math.h>` para obter o **valor absoluto** da expressão `expr`.
+
+*Exemplo:* Comparação de Reais
+```c
+#include <stdio.h>
+#include <math.h>
+
+int main(void) {
+    double a = 1.0;
+    double b = (0.3 * 3) + 0.1;
+    const double epsilon = 1e-6; // 0.000001, 10^-6
+    int valor_expr = (fabs(a - b) < epsilon);
+    printf("%.20f %.20f %d\n", a, b, valor_expr); 
+    // Resultado: 1.00000000000000000000 0.99999999999999988898 1 
+    return 0;
+}
 ```
 
 ## Operadores Lógicos
+- Os operadores lógicos conseguem ser aplicados em uma, duas ou mais expressões, para expressar uma **ideia mais complexa** a ser avaliada.
+- Operadores:
+    - **NÃO** (`!`).
+    - **E** (`&&`).
+    - **OU** (`||`).
+
+### NÃO
+- O operador lógico de **negação** (`NÃO`), quando aplicado a uma expressão:
+    - `Retorna verdadeiro` quando a expressão é **falsa**.
+    - `Retorna falso` quando a expressão é **verdadeira**.
+- Utilizamos o sı́mbolo `!` para denotar o **operador de negação**.
+
+| expr | !expr |
+| :--: | :---: |
+|  0   |   1   |
+|  1   |   0   |
+
+*Exemplo:* Verificação de um Número Ímpar
+```c
+#include <stdio.h>
+
+int main(void) {
+    int n;
+    scanf("%d", &n);
+    int impar = !((n % 2) == 0);
+    printf("%d\n", impar);
+    return 0;
+}
+```
+
+### E
+- O operador lógico de **conjunção** (`E`), quando aplicado a duas expressões:    
+    - `Retorna verdadeiro` quando **ambas** as expressões são **verdadeiras**.
+    - `Retorna falso` quando **pelo menos uma** das expressões é **falsa**.
+- Utilizamos os sı́mbolos `&&` para denotar o operador de conjunção.
+
+| expr1 | expr2 | expr1 && expr2 |
+| :--:  | :----: | :-----------: |
+|  0    |   0    |       0       |
+|  0    |   1    |       0       |
+|  1    |   0    |       0       |
+|  1    |   1    |       1       |
+
+*Exemplo:* Verificação de Número Divisível por 6
+```c
+#include <stdio.h>
+
+int main(void) {
+    int numero;
+    scanf("%d", &numero);
+    int divisivel_por_6 = (numero % 2 == 0)  && (numero % 3 == 0); 
+    printf("%d\n", divisivel_por_6);
+    return 0;
+}
+```
+
+### OU
+- O operador lógico de **conjunção** (`OU`), quando aplicado a duas expressões:
+    - `Retorna verdadeiro` quando **ao menos uma** das expressões é **verdadeira**.
+    - `Retorna falso` quando **ambas** as expressões são **falsas**.
+- Utilizamos os sı́mbolos `||` para denotar o operador de disjunção.
+
+| expr1 | expr2 | expr1 \|\| expr2 |
+| :--:  | :----: | :-----------: |
+|  0    |   0    |       0       |
+|  0    |   1    |       1       |
+|  1    |   0    |       1       |
+|  1    |   1    |       1       |
+
+*Exemplo:* Verificação de um Número Divisı́vel por 5 ou por 10
+```c
+#include <stdio.h>
+
+int main() {
+    int numero;
+    scanf("%d", &numero);
+    int divisivel_por_5_ou_10 = (numero % 5 == 0) || (numero % 10 == 0);
+    printf("%d\n", divisivel_por_5_ou_10);
+    return 0;
+}
+```
+
+### Associatividade
+- É possı́vel compor expressões com **vários operadores lógicos**.
+- Neste caso, **nenhum** operador possui **precedência** sobre o outro.
+- Contudo, a `associatividade` é da **esquerda para a direita**.
+- Para verificar se (*um número é ı́mpar*) ou (*divisı́vel por 5 e 7 simultaneamente*), poderı́amos escrever a seguinte expressão: 
+
+`!(n % 2 == 0) || ((n % 5 == 0) && (n % 7 == 0))`
+
+- Os `parênteses` aqui são **indispensáveis**, pois sem eles, a expressão seria lida como: “(*o número é ı́mpar ou é divisı́vel por 5*) e *é divisı́vel por 7*”.
+- Sem os parênteses, caso o número seja 41, temos que o número é **ı́mpar ou divisı́vel por 5**, mas **não é divisı́vel por 7**, portanto a expressão seria **falsa**.
+- Com os parênteses, o número é ı́mpar, o que já configura a expressão **verdadeira**.
 
 ## Estrutura de Decisão
+
+
 
 ## Considerações
 
