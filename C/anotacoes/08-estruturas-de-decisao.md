@@ -63,37 +63,74 @@ int main(void) {
 > ![WARNING]
 >
 > Não confundir os sı́mbolos de **atribuição** (`=`) e **igualdade** (`==`). 
->  - `=` é utilizado para **atribuir** a uma variável o **valor** de uma expressão.
+> - `=` é utilizado para **atribuir** a uma variável o **valor** de uma expressão.
 > - `==` é utilizado para **comparar** duas expressões.
 
-
 ### Diferença
+- O operador de diferença, quando aplicado sobre duas expressões, `retorna 1` (**verdadeiro**), quando elas são diferentes, ou `0` (**falso**), quando elas são iguais.
+- Na linguagem C, usamos os sı́mbolos `!=`:
+    - `9 != 9 // retorna 0 (falso)`.
+    - `0 != 5 // retorna 1 (verdadeiro)`.
 
-*Exemplos:* Igualdade
+*Exemplos:* Diferença
 ```c
+#include <stdio.h>
+
+int main(void) {
+    printf("%d\n", 42 != 42); // retorna 0
+    return 0;
+}
+```
+
+```c
+#include <stdio.h>
+
+int main(void) {
+    printf("%d\n", 21 != 42); // retorna 1
+    return 0;
+}
+```
+
+```c
+#include <stdio.h>
+
+int main(void) {
+    printf("%d\n", (2 + 3) != (1 + 4)); // retorna 0
+    return 0;
+}
+```
+
+```c
+#include <stdio.h>
+
+int main(void) {
+    int a = 2, b = 3, c = 1, d = 4; 
+    printf("%d\n", (a + c) != (b + d)); // retorna 1
+    return 0;
+}
 ```
 
 ### Maior
 
-*Exemplos:* Igualdade
+*Exemplos:* 
 ```c
 ```
 
 ### Maior ou Igual
 
-*Exemplos:* Igualdade
+*Exemplos:* 
 ```c
 ```
 
 ### Menor
 
-*Exemplos:* Igualdade
+*Exemplos:* 
 ```c
 ```
 
 ### Menor ou Igual
 
-*Exemplos:* Igualdade
+*Exemplos:* 
 ```c
 ```
 
