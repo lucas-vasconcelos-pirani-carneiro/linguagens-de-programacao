@@ -400,11 +400,82 @@ int main(void) {
 > - Independente do bloco da estrutura if possuir um ou múltiplos comandos, estes devem estar **indentados** para maior **legibilidade** de código.
 
 ### Senão
+- Usamos a estrutura **Senão** se quisermos que o código faça uma **ação** quando a expressão seja `verdadeira` e outra ação caso ela seja `falsa`.
+- Após a execução do código de `bloco do if` se a expressão for **verdadeira**, ou do `else` caso a expressão seja **falsa**, o código **continua sua execução** a partir dos comandos que estão abaixo da estrutura if else.
 
-*Exemplo:* 
+![senao](../img/08-estruturas-de-decisao/senao.png)
+
+#### Sintaxe
+- Único Comando:
 ```c
-
+if (expr) {
+    comando_1;
+    ...
+    comando_n;
+} else
+    comando_else_1;
 ```
+
+- Múltiplos Comandos:
+```c
+if (expr){
+    comando_1;
+    ...
+    comando_n;
+}
+else{
+    comando_else_1;
+    ...
+    comando_else_n;
+}
+```
+
+> [!NOTE]
+>
+> #### Observação: Uso das Chaves
+> - É um erro de **lógica** não colocar chaves quando o bloco de comandos do **Senão** possui mais de um comando.
+> - O código pode até `compilar`, mas o resultado **não** será o esperado.
+> - Inclusive, as chaves podem ser utilizadas até quando se tem **apenas** um único comando no bloco
+
+#### Exemplos
+*Exemplo:* Par ou Ímpar?
+```c
+#include <stdio.h>
+
+int main(void) {
+    int n;
+    printf("Digite um número: ");
+    scanf("%d", &n);
+    if (n % 2 == 0)
+        printf("%d é par\n", n);
+    else
+        printf("%d é ı́mpar\n");
+    return 0;
+}
+```
+
+*Exemplo:* Maior ou Menor?
+```c
+#include <stdio.h>
+
+int main(void) {
+    int a, b;
+    printf("Digite dois números: ");
+    scanf("%d %d", &a, &b);
+    if (a >= b)
+        printf("O primeiro número é maior ou igual ao segundo.\n");
+    else 
+        printf("O primeiro número é menor que o segundo.\n");
+    printf("Os números digitados foram: %d %d\n", a, b);
+    return 0;
+}
+```
+
+> [!NOTE]
+>
+> #### Boa Prática de Programação: 
+> - A mesma **observação** da estrutura if serve para a estrutura else.
+> - Os comandos do bloco de código else devem estar devidamente **indentados**.
 
 ### Estruturas Aninhadas
 
