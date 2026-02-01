@@ -676,4 +676,7 @@ int main(void) {
 
 ## Considerações
 
-
+> [!WARNING]
+>
+> - Consideramos  que quando uma expressão é **verdadeira**, o seu valor é 1, e quando ela é **falsa**, o seu valor é 0.
+> - Contudo, na `linguagem C`, qualquer valor **diferente de 0** é considerado **verdadeiro**, assim, se uma expressão for avaliada em um **valor diferente** de 0, ela será considerada **verdadeira**
