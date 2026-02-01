@@ -478,8 +478,202 @@ int main(void) {
 > - Os comandos do bloco de código else devem estar devidamente **indentados**.
 
 ### Estruturas Aninhadas
+- É possı́vel utilizar uma estrutura `if/else` **dentro** de outra estrutura `if/else`.
+- Com isso, conseguimos criar uma **lógica mais complexa** nas nossas comparações.
+
+*Exemplo*: Suponha que queiramos que o programa leia um número inteiro e imprima uma mensagem personalizada para cada um dos seguintes cenários:
+1. Número par e menor que 50.
+2. Número par e maior ou igual a 50.
+3. Número ı́mpar e menor que 50.
+4. Número ı́mpar e maior ou igual a 50.
+
+```c
+#include <stdio.h>
+
+int main(void) {
+    int n;
+    printf("Digite um número : ");
+    scanf("%d", &n);
+
+    if (n % 2 == 0) // n é par  
+    { 
+        if (n < 50) {
+        printf("O número é par e menor que 50\n");
+        }
+        else {
+        printf("O número é par e maior ou igual do que 50\n");
+        }
+    }
+    else // n é ı́mpar 
+    { 
+        if (n < 50) {
+            printf("O número é ímpar e menor que 50\n");
+        }
+        else {
+            printf("O número é ímpar e maior ou igual do que 50\n");
+        }
+    }
+    return 0;
+}
+```
+
+*Exemplo*: Suponha agora que queiramos ler um número e dizer se:
+1. Ele é menor ou igual a 100.
+2. Ele é maior que 100 e menor ou igual a 200.
+3. Ele é maior que 200 e menor ou igual a 300.
+4. Ele não se enquadra em nenhuma das opções.
+
+- Uma estratégia é utilizar `4 estruturas if`. Contudo o **desempenho** não será bom, já que sempre 4 comparações serão realizadas.
+
+```c
+#include <stdio.h>
+
+int main(void) {
+    int n;
+    printf("Digite um número : ");
+    scanf("%d", &n);
+    
+    if (n <= 100) 
+    {
+        printf("O número é menor ou igual a 100\n");
+    }
+    
+    if (n > 100 && n <= 200) 
+    {
+        printf("O número é maior que 100 e menor ou igual a 200\n");
+    }
+    
+    if (n > 200 && n <= 300) 
+    {
+        printf("O número é maior que 200 e menor ou igual a 300\n");
+    }
+    
+    if (n > 300) 
+    {
+        printf("O número não se enquadra em nenhuma das opções\n");
+    }
+
+    return 0;
+}
+```
+
+- Uma estratégia melhor é estruturas aninhadas.
+- Sempre faremos o número de **comparações** estritamente **necessários**.
+
+```c
+#include <stdio.h>
+
+int main(void) {
+    int n;
+    printf("Digite um número: ");
+    scanf("%d", &n);
+
+    if (n <= 100)
+    {
+        printf("O número é menor ou igual a 100\n");
+    }
+    else // n > 100
+    {
+        if (n <= 200)
+        {
+            printf("O número é maior que 100 e menor ou igual a 200\n");
+        }
+        else // n > 200
+        {
+            if (n <= 300) 
+            {
+                printf("O número é maior que 200 e menor ou igual a 300\n");
+            }
+            else // n > 300
+            {
+                printf("O número não se enquadra em nenhuma das opções\n");
+            }  
+        }
+    }
+
+    return 0;
+}
+```
+
+- Neste tipo de encadeamento, em que **logo após** um `else` existe um **único** `if` (escada else-if), podemos simplificar o nosso código.
+- Escrevemos a estrutura `else if`.
+
+```c
+#include <stdio.h>
+
+int main(void) {
+    int n;
+    printf("Digite um número: ");
+    scanf("%d", &n);
+
+    if (n <= 100) // n <= 100
+    {
+        printf("O número é menor ou igual a 100\n");
+    }
+    else if (n <= 200)// n > 100 e n <= 200
+    {
+        printf("O número é maior que 100 e menor ou igual a 200\n");
+    }
+    else if (n <= 300) // n > 200 e n <= 300
+    {
+        printf("O número é maior que 200 e menor ou igual a 300\n");
+    }
+    else // n > 300
+    {
+        printf("O número não se enquadra em nenhuma das opções\n");
+    }
+    
+    return 0;
+}
+```
 
 ### Operador Ternário
+- O operador ternário da linguagem C possui a seguinte **sintaxe**: `expr_a ? expr_b : expr_c;`
+- Caso `expr_a` seja **verdadeira**, então o operador ternário irá **retornar** a expressão `expr_b`.
+- Senão ele irá **retornar** a expressão `expr_c`.
+
+*Exemplo:* Lê dois números inteiros e os compara de modo a atribuir à variável menor o menor dos dois números através do operador ternário.
+```c
+#include <stdio.h>
+
+int main(void) {
+    int a, b;
+    printf("Digite dois números : ");
+    scanf("%d %d", &a, &b);
+    
+    int menor = a < b ? a : b;
+    printf("O menor dos valores digitados é %d\n", menor);
+    
+    return 0;
+}
+```
+
+*Exemplo:* Utilizando a estrutura if/else.
+```c
+#include <stdio.h>
+
+int main(void) {
+    int a, b;
+    int menor;
+    printf("Digite dois números : ");
+    scanf("%d %d", &a, &b);
+
+    if (a < b) 
+    {
+        menor = a;
+    }
+    else 
+    {
+        menor = b;
+    }
+    printf("O menor dos valores digitados é %d\n", menor);
+    
+    return 0;
+}
+```
+
+- Repare que o código fica um pouco **mais extenso**, apesar de a linguagem de máquina gerada em **ambos** os códigos ser a **mesma** (muito provavelmente).
 
 ## Considerações
+
 
